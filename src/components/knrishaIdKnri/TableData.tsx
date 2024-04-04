@@ -11,7 +11,7 @@ import 'mantine-react-table/styles.css'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { makeData, type Person } from '../shainIdKnri/makeData'
 
-const Example = () => {
+const TableData = () => {
   const columns = useMemo<MRT_ColumnDef<Person>[]>(
     () => [
       {
@@ -32,21 +32,7 @@ const Example = () => {
       },
       {
         accessorKey: 'address',
-        header: 'Address',
-        size: 400,
-        mantineTableBodyCellProps: {
-          onLoad: cellData => {
-            console.log(cellData)
-          },
-          classNames: {
-            td: 'bg-red-200'
-          }
-        },
-        mantineTableHeadCellProps: {
-          classNames: {
-            th: 'bg-red-200'
-          }
-        }
+        header: 'Address'
       },
       {
         accessorKey: 'zipCode',
@@ -125,4 +111,4 @@ const Example = () => {
   return <MantineReactTable table={table} />
 }
 
-export default Example
+export default TableData
