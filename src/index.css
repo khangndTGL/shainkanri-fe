@@ -25,7 +25,7 @@ pre {
   margin: 0;
 }
 
-.mantine-Table-td {
+/* .mantine-Table-td {
   width: unset !important;
   min-width: unset !important;
 }
@@ -36,4 +36,31 @@ pre {
 
 table {
   table-layout: auto !important;
+} */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  font-size: 11px;
+}
+
+th {
+  border-bottom: 1px solid #93bfeb;
+  border: 0.5px solid black;
+  background-color: #3398ff;
+  color: white;
+  font-weight: 100;
+  min-width: 25px;
+  text-align: center;
+  white-space: nowrap;
+  height: 25px;
+}
+
+td {
+  text-align: center;
+  border: 0.5px solid black;
+  max-height: 21px;
+  text-align: left;
+  white-space: nowrap;
 }

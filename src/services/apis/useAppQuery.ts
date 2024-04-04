@@ -2,7 +2,7 @@ import { useQuery, UseQueryOptions } from '@tanstack/react-query'
 import { replaceDynamicValues } from '../common'
 import http from './http'
 // http://133.167.66.141:8008/bushims?bscd=I3&teamcd=&shaincd=&shainnm1=&shainnm2=&acct=
-type ApiQueryType = {
+export type ApiQueryType = {
   bscdCbbItem: {
     url: {
       baseUrl: '/bscd-cbb-item'
