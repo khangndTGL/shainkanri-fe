@@ -1,59 +1,63 @@
 import { Navigate, Outlet, useRoutes } from 'react-router-dom'
+import Layout from '../components/Layout'
+import Auth from '../components/auth/Auth'
 import KnrishaIdKnri from '../components/knrishaIdKnri/KnrishaIdKnri'
-import ShainIdKnri from '../components/shainIdKnri/ShainIdKnri'
-import { lsActions } from '../services/common'
+import ShainIdKnri from '../components/knrishaIdKnri/ShainIdKnri'
 
-function PrivateRoute() {
-  const isAuthenticated = !!lsActions.getToken()
-  console.log('private route', lsActions.getToken())
-  return isAuthenticated ? <Outlet /> : <Navigate to='/' />
+function PrivateRoute({ children }: { children?: React.ReactNode }) {
+  const isAuthenticated = true
+  return isAuthenticated ? children : <Navigate to='/' />
 }
 
 function PublicOnlyRoute() {
-  const isAuthenticated = !!lsActions.getToken()
-  console.log('public only route', lsActions.getToken())
+  const isAuthenticated = true
   return isAuthenticated ? <Navigate to='/shainIdKnri' /> : <Outlet />
 }
 
 export default function useRouteElements() {
   const routeElements = useRoutes([
-    // {
-    //   path: '/',
-    //   element: <PublicOnlyRoute />,
-    //   children: [
-    //     {
-    //       path: '/',
-    //       element: <Auth />
-    //     }
-    //   ]
-    // },
-    // {
-    //   path: '/',
-    //   element: <PrivateRoute />,
-    //   children: [
-    //     {
-    //       path: 'shainIdKnri',
-    //       element: <ShainIdKnri />
-    //     },
-    //     {
-    //       path: 'knrishaIdKnri',
-    //       element: <KnrishaIdKnri />
-    //     }
-    //   ]
-    // },
-    // {
-    //   path: '*',
-    //   element: <Navigate to='/' />
-    // }
-
     {
-      path: 'shainIdKnri',
-      element: <ShainIdKnri />
+      path: '/',
+      element: <PublicOnlyRoute />,
+      children: [
+        {
+          path: '/',
+          element: <Auth />
+        }
+      ]
     },
     {
-      path: 'knrishaIdKnri',
-      element: <KnrishaIdKnri />
+      path: '/',
+      element: (
+        <PrivateRoute>
+          <Layout>
+            <Outlet />
+          </Layout>
+        </PrivateRoute>
+      ),
+      children: [
+        {
+          path: 'shainIdKnri',
+          element: <ShainIdKnri />
+        },
+        {
+          path: 'knrishaIdKnri',
+          element: <KnrishaIdKnri />
+        }
+      ]
+    },
+    {
+      path: '*',
+      element: <Navigate to='/' />
     }
+    // {
+    //   path: 'shainIdKnri',
+    //   element: <ShainIdKnri />
+    // },
+    // {
+    //   path: 'knrishaIdKnri',
+    //   element: <KnrishaIdKnri />
+    // }
   ])
 
   return routeElements
