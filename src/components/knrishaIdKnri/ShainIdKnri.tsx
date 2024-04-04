@@ -41,16 +41,35 @@ export default function ShainIdKnri() {
     document.body.removeChild(link)
   }
 
+  const csvHeader = [
+    '部支店CD',
+    '部支店名',
+    '課',
+    '社員CD',
+    '社員名',
+    '社員名ｶﾅ',
+    '役職CD',
+    '役職名',
+    '性別',
+    'ﾒｰﾙｱﾄﾞﾚｽ',
+    'ｱｶｳﾝﾄ',
+    'ﾊﾟｽﾜｰﾄﾞ',
+    'ﾀｲﾌﾟ者ｲﾆｼｬﾙ',
+    '登録日',
+    '更新日'
+  ]
+
   return (
     <div className='bg-white flex-1 flex flex-col p-3'>
       <div className='w-full'>
         <p>社員ID管理</p>
-        <div className='grid grid-cols-3 gap-2 gap-x-6 py-2 w-fit'>
+        <div className='flex flex-wrap gap-2 gap-x-6 py-2 w-fit'>
           <Controller
             control={queryForm.control}
             name='bscd'
             render={({ field }) => (
               <Select
+                clearable
                 size='sm'
                 className='w-40 gap-2'
                 label='部支店'
@@ -217,7 +236,7 @@ export default function ShainIdKnri() {
             <tbody>
               {data?.map(item => (
                 <tr key={item.shaincd}>
-                  <td className='text-blue-700'>編集</td>
+                  <td className='text-blue-700 cursor-pointer'>編集</td>
                   <td className='text-center'>{item.bscd}</td>
                   <td>{item.bsnm}</td>
                   <td className='text-center'>{item.blkcd}</td>
