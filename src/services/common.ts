@@ -14,20 +14,20 @@ export const replaceDynamicValues = (
   return replacedUrl
 }
 
-export const LocalStorageEventTarget = new EventTarget()
+export const SessionStorageEventTarget = new EventTarget()
 export const lsActions = {
-  getToken: () => localStorage.getItem('token') || '',
+  getToken: () => sessionStorage.getItem('token') || '',
 
-  setToken: (token: string) => localStorage.setItem('token', token),
+  setToken: (token: string) => sessionStorage.setItem('token', token),
 
   dispatchClearEvent: () => {},
 
   clearLS: (dispatchEvent?: boolean) => {
-    localStorage.removeItem('token')
+    sessionStorage.removeItem('token')
 
     if (dispatchEvent) {
       const clearLSEvent = new Event('clearLS')
-      LocalStorageEventTarget.dispatchEvent(clearLSEvent)
+      SessionStorageEventTarget.dispatchEvent(clearLSEvent)
     }
   }
 }

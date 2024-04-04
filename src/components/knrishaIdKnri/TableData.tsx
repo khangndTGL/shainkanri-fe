@@ -32,7 +32,21 @@ const Example = () => {
       },
       {
         accessorKey: 'address',
-        header: 'Address'
+        header: 'Address',
+        size: 400,
+        mantineTableBodyCellProps: {
+          onLoad: cellData => {
+            console.log(cellData)
+          },
+          classNames: {
+            td: 'bg-red-200'
+          }
+        },
+        mantineTableHeadCellProps: {
+          classNames: {
+            th: 'bg-red-200'
+          }
+        }
       },
       {
         accessorKey: 'zipCode',
@@ -101,7 +115,7 @@ const Example = () => {
     enableDensityToggle: false,
     enableEditing: false,
     enableExpandAll: false,
-
+    layoutMode: 'grid',
     mantineTableContainerProps: { style: { maxHeight: '700px' } },
     onSortingChange: setSorting,
     state: { isLoading, sorting },

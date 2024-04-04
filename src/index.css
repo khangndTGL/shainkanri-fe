@@ -24,3 +24,16 @@ p,
 pre {
   margin: 0;
 }
+
+.mantine-Table-td {
+  width: unset !important;
+  min-width: unset !important;
+}
+.mantine-Table-th {
+  width: unset !important;
+  min-width: unset !important;
+}
+
+table {
+  table-layout: auto !important;
+}

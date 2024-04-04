@@ -7,7 +7,7 @@ import {
   TextInput
 } from '@mantine/core'
 import { unparse } from 'papaparse'
-import { NavLink } from 'react-router-dom'
+import { useAppQuery } from '../../services/apis/useAppQuery'
 
 const tableData: TableData = {
   caption: 'Some elements from periodic table',
@@ -49,6 +49,13 @@ const tableData: TableData = {
 }
 
 export default function ShainIdKnri() {
+  const { data: bscdCbbItem } = useAppQuery({
+    key: 'bscdCbbItem',
+    url: {
+      baseUrl: '/bscd-cbb-item'
+    }
+  })
+
   const exportToCsv = () => {
     const csv = unparse(tableData.body as any, { delimiter: ' , ' })
     const blob = new Blob([csv], { type: 'text/csv' })
@@ -60,6 +67,7 @@ export default function ShainIdKnri() {
     link.click()
     document.body.removeChild(link)
   }
+
   return (
     <div className='bg-white flex-1 flex flex-col p-3'>
       <div className='w-full'>
@@ -69,7 +77,11 @@ export default function ShainIdKnri() {
             className='w-60 flex gap-2'
             label='部支店'
             placeholder='Pick value'
-            data={['React', 'Angular', 'Vue', 'Svelte']}
+            // data={['React', 'Angular', 'Vue', 'Svelte']}
+            data={bscdCbbItem?.bscd_cbb.map(item => ({
+              label: item.bsnm,
+              value: item.bscd
+            }))}
             classNames={{
               input: 'w-32',
               label: 'flex-1 flex items-center justify-end'

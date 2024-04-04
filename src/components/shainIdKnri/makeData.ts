@@ -18,7 +18,10 @@ export const makeData = (numberOfRows: number) =>
     middleName: faker.person.firstName(),
     lastName: faker.person.lastName(),
     email: faker.internet.email(),
-    address: faker.location.streetAddress(),
+    address:
+      faker.location.streetAddress() +
+      faker.location.streetAddress() +
+      faker.location.streetAddress(),
     zipCode: faker.location.zipCode(),
     city: faker.location.city(),
     state: faker.location.state(),
