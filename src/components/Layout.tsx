@@ -6,13 +6,13 @@ export default function Layout({ children }: { children?: React.ReactNode }) {
   return (
     <div className='w-screen h-screen flex flex-col'>
       <div className='flex-1 flex'>
-        <div className='w-52 p-3 flex flex-col bg-[#56156a] gap-4'>
+        <div className='w-52 p-3 flex-none flex flex-col bg-[#373737] gap-4'>
           <div className='flex-1 flex flex-col gap-4'>
             <NavLink
               to='/shainIdKnri'
               className={({ isActive }) =>
-                `px-2 py-3 group text-[#ffffff] font-medium flex items-center gap-2 rounded-lg no-underline text-sm ${
-                  isActive ? 'active bg-[#ffffff35]' : ''
+                `px-4 py-3 group text-[#ffffff] font-medium flex items-center gap-2 rounded-lg no-underline text-sm ${
+                  isActive ? 'active bg-[#ffffff18]' : ''
                 }`
               }
             >
@@ -22,8 +22,8 @@ export default function Layout({ children }: { children?: React.ReactNode }) {
             <NavLink
               to='/knrishaIdKnri'
               className={({ isActive }) =>
-                `px-2 py-3 text-[#ffffff] group font-medium flex items-center gap-2 rounded-lg no-underline text-sm ${
-                  isActive ? 'active bg-[#ffffff35]' : ''
+                `px-4 py-3 text-[#ffffff] group font-medium flex items-center gap-2 rounded-lg no-underline text-sm ${
+                  isActive ? 'active bg-[#ffffff18]' : ''
                 }`
               }
             >

@@ -2,7 +2,7 @@
 import { Navigate, Outlet, useRoutes } from 'react-router-dom'
 import Layout from '../components/Layout'
 import Auth from '../components/auth/Auth'
-import KnrishaIdKnri from '../components/knrishaIdKnri/KnrishaIdKnri'
+import KnrishaIdKnri from '../components/knrishaIdKnri/index'
 import ShainIdKnri from '../components/knrishaIdKnri/ShainIdKnri'
 import { lsActions } from '../services/common'
 

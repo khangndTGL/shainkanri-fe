@@ -30,8 +30,8 @@ export default function Auth() {
   })
 
   useEffect(() => {
-    notifications.clean()
     if (errors.id?.message) {
+      notifications.clean()
       notifications.show({
         color: 'red',
         title: 'Error',

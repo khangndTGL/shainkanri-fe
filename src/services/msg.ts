@@ -1,4 +1,5 @@
 const msgError = {
-  required: ' is required'
+  required: ' is required',
+  invalid: ' is invalid'
 }
 export { msgError }
