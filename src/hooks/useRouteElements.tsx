@@ -1,16 +1,18 @@
+/* eslint-disable react-refresh/only-export-components */
 import { Navigate, Outlet, useRoutes } from 'react-router-dom'
 import Layout from '../components/Layout'
 import Auth from '../components/auth/Auth'
 import KnrishaIdKnri from '../components/knrishaIdKnri/KnrishaIdKnri'
 import ShainIdKnri from '../components/knrishaIdKnri/ShainIdKnri'
+import { lsActions } from '../services/common'
 
 function PrivateRoute({ children }: { children?: React.ReactNode }) {
-  const isAuthenticated = true
+  const isAuthenticated = !!lsActions.getToken()
   return isAuthenticated ? children : <Navigate to='/' />
 }
 
 function PublicOnlyRoute() {
-  const isAuthenticated = true
+  const isAuthenticated = !!lsActions.getToken()
   return isAuthenticated ? <Navigate to='/shainIdKnri' /> : <Outlet />
 }
 
